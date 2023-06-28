@@ -1,5 +1,6 @@
 const ADD_WORD_TO_DICTIONARY = "ADD_WORD_TO_DICTIONARY";
 const REMOVE_WORD_FROM_DICTIONARY = "REMOVE_WORD_FROM_DICTIONARY";
+const SET_DICTIONARY = "SET_DICTIONARY";
 
 export function addDictionaryWord(word, translation) {
   return {
@@ -17,6 +18,15 @@ export function removeDictionaryWord(word, translation) {
     payload: {
       word: word,
       translation: translation,
+    },
+  };
+}
+
+export function setDictionary(dictionary) {
+  return {
+    type: SET_DICTIONARY,
+    payload: {
+      ...dictionary,
     },
   };
 }
@@ -39,6 +49,8 @@ export function DictionaryReducer(state = { words: [], nextId: 0 }, action) {
       });
       newDictionary.nextId = state.nextId;
       return newDictionary;
+    case SET_DICTIONARY:
+      return { ...action.payload };
 
     default:
       return state;

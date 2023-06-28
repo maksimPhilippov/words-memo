@@ -1,6 +1,7 @@
 // const CHANGE_WORD = "CHANGE_WORD";
 const CHANGE_DECK = "CHANGE_DECK";
 const CHANGE_GAME_MODE = "CHANGE_GAME_MODE";
+const SET_GAME = "SET_GAME";
 
 // export function changeWord(wordId) {
 //   return {
@@ -28,6 +29,16 @@ export function changeGameMode(gameMode) {
     },
   };
 }
+
+export function setGame(game) {
+  return {
+    type: SET_GAME,
+    payload: {
+      ...game,
+    },
+  };
+}
+
 export function GameReducer(
   state = { currentDeck: "chose deck", gameMode: "lite" },
   action
@@ -50,6 +61,9 @@ export function GameReducer(
         ...state,
         gameMode: action.payload.gameMode,
       };
+
+    case SET_GAME:
+      return { ...action.payload };
     default:
       return state;
   }

@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeWord } from "../../reducers/GameReducer";
+import React, { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 import Guesser from "../../components/Guesser/Guesser";
 
 export default function GameScreen() {

@@ -2,6 +2,7 @@ const ADD_WORD_TO_DECK = "ADD_WORD_TO_DECK";
 const REMOVE_WORD_FROM_DECK = "REMOVE_WORD_FROM_DECK";
 const CREATE_DECK = "CREATE_DECK";
 const REMOVE_DECK = "REMOVE_DECK";
+const SET_DECKS = "SET_DECKS";
 
 export function createDeck(name) {
   return {
@@ -37,6 +38,15 @@ export function removeWordFromDeck(wordId, deckName) {
     payload: {
       wordId: wordId,
       deckName: deckName,
+    },
+  };
+}
+
+export function setDecks(decks) {
+  return {
+    type: SET_DECKS,
+    payload: {
+      decks: decks,
     },
   };
 }
@@ -102,6 +112,8 @@ export function DeckReducer(state = [], action) {
       }
       return state;
 
+    case SET_DECKS:
+      return action.payload.decks;
     default:
       return state;
   }
