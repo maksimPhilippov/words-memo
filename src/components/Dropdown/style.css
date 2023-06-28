@@ -1,0 +1,12 @@
+.dropdown-base {
+  width: fit-content;
+}
+
+.dropdown-base ul {
+  list-style: none;
+  position: absolute;
+}
+
+.dropdown-option {
+  display: block;
+}
