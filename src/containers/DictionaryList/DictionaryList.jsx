@@ -7,7 +7,7 @@ export default function DictionaryList() {
   return (
     <div>
       {cards.map((card) => (
-        <Card key={card.id} word={card.word} translation={card.translation} />
+        <Card key={card.id} card={card} />
       ))}
     </div>
   );
