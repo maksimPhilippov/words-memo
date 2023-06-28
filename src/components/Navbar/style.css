@@ -1,0 +1,42 @@
+.navigation-panel {
+  width: 100%;
+  background-color: limegreen;
+}
+
+.navigation-list {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  list-style: none;
+}
+
+.navigation-option {
+  padding: 0.2em 1em;
+  margin: 0;
+  transition: background-color 0.5s ease;
+}
+
+.navigation-option > a {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: black;
+}
+
+.navigation-option:hover {
+  background-color: lime;
+}
+
+@media only screen and (min-width: 600px) {
+  .navigation-list {
+    flex-direction: row;
+  }
+  .navigation-option {
+    padding: 0.5em 1em;
+    margin: 0.5em 1em;
+  }
+}
