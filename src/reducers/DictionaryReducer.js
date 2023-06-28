@@ -25,13 +25,13 @@ export function DictionaryReducer(state = { words: [], nextId: 0 }, action) {
   let newDictionary = {};
   switch (action.type) {
     case ADD_WORD_TO_DICTIONARY:
-      newDictionary.words = state.slice(0);
+      newDictionary.words = state.words.slice(0);
       newDictionary.words.push({ ...action.payload, id: state.nextId });
       newDictionary.nextId = state.nextId + 1;
       return newDictionary;
-      break;
+
     case REMOVE_WORD_FROM_DICTIONARY:
-      newDictionary.words = state.filter((element) => {
+      newDictionary.words = state.words.filter((element) => {
         return (
           element.word !== action.payload.word ||
           element.translation !== action.payload.translation
@@ -39,10 +39,8 @@ export function DictionaryReducer(state = { words: [], nextId: 0 }, action) {
       });
       newDictionary.nextId = state.nextId;
       return newDictionary;
-      break;
 
     default:
       return state;
-      break;
   }
 }
