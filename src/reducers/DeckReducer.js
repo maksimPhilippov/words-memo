@@ -42,7 +42,7 @@ export function removeWordFromDeck(wordId, deckName) {
 }
 
 export function DeckReducer(state = [], action) {
-  let newState, deckIndex;
+  let newState, deckIndex, newWordIds;
 
   switch (action.type) {
     case CREATE_DECK:
@@ -53,7 +53,8 @@ export function DeckReducer(state = [], action) {
       ) {
         return state;
       }
-      newState.push({ name: action.payload.name, wordIds: [] });
+      newWordIds = new Set();
+      newState.push({ name: action.payload.name, wordIds: newWordIds });
       return newState;
 
     case REMOVE_DECK:
@@ -64,34 +65,42 @@ export function DeckReducer(state = [], action) {
 
     case ADD_WORD_TO_DECK:
       deckIndex = state.findIndex(
-        (element) => element.name === action.payload.name
+        (element) => element.name === action.payload.deckName
       );
       if (deckIndex !== -1) {
         newState = state.filter(
           (element) => element.name !== action.payload.deckName
         );
+
+        newWordIds = new Set(state[deckIndex].wordIds);
+        newWordIds.add(action.payload.wordId);
+
         newState.push({
           name: state[deckIndex].name,
-          wordIds: state[deckIndex].wordIds
-            .slice(0)
-            .push(action.payload.wordId),
+          wordIds: newWordIds,
         });
+        return newState;
       }
+      return state;
+
     case REMOVE_WORD_FROM_DECK:
       deckIndex = state.findIndex(
-        (element) => element.name === action.payload.name
+        (element) => element.name === action.payload.deckName
       );
       if (deckIndex !== -1) {
         newState = state.filter(
           (element) => element.name !== action.payload.deckName
         );
+        newWordIds = new Set(state[deckIndex].wordIds);
+        newWordIds.delete(action.payload.wordId);
+
         newState.push({
           name: state[deckIndex].name,
-          wordIds: state[deckIndex].wordIds.filter(
-            (id) => id !== action.payload.wordId
-          ),
+          wordIds: newWordIds,
         });
+        return newState;
       }
+      return state;
 
     default:
       return state;
