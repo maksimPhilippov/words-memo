@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import Guesser from "../../components/Guesser/Guesser";
 import GameScore from "../../components/GameScore/GameScore";
@@ -26,9 +26,21 @@ export default function GameScreen() {
     currentWord: pickWord(),
   });
 
+  useEffect(() => {
+    setGameState({
+      mistakeCounter: 0,
+      hitCounter: 0,
+      currentWord: pickWord(),
+    });
+  }, [deck]);
+
   function pickWord() {
+    console.log("pick ", words);
     if (words === undefined) {
       return undefined;
+    }
+    if (words.length == 0) {
+      return { word: "add words to this deck", translation: null, id: null };
     }
     let id,
       result,
