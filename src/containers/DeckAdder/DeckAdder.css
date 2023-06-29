@@ -1,4 +1,4 @@
-.dictionary-adder {
+.deck-adder {
   margin: 1em auto;
   padding: 0.5em;
   max-width: 15rem;
@@ -8,8 +8,8 @@
   background-color: limegreen;
 }
 
-.dictionary-adder > input,
-.dictionary-adder > button {
+.deck-adder > input,
+.deck-adder > button {
   margin: 0.25em;
   padding: 0.2em 0.5em;
 

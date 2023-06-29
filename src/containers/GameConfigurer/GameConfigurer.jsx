@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { changeGameMode, changePlayingDeck } from "../../actions/GameActions";
+import "./GameConfigurer.css";
 
 const gameModes = ["lite", "to fail", "long race", "medium race", "short race"];
 
@@ -13,7 +14,7 @@ export default function GameConfigurer() {
   );
 
   return (
-    <div>
+    <div className="game-configurer">
       <Dropdown
         options={gameModes}
         current={game.gameMode}

@@ -1,0 +1,9 @@
+.game-configurer {
+  margin: 0.5em auto;
+  padding: 0.5em auto;
+  width: 12rem;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}

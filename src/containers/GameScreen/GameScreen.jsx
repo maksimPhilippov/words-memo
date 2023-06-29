@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import Guesser from "../../components/Guesser/Guesser";
 import GameScore from "../../components/GameScore/GameScore";
+import "./GameScreen.css";
 
 export default function GameScreen() {
   const gameConfiguration = useSelector((state) => state.game);
@@ -17,7 +18,7 @@ export default function GameScreen() {
     if (deck !== undefined) {
       return Array.from(deck.wordIds.values());
     }
-  }, [dictionary, deck]);
+  }, [deck]);
 
   const [gameState, setGameState] = useState({
     mistakeCounter: 0,
@@ -41,7 +42,7 @@ export default function GameScreen() {
 
   if (deck !== undefined) {
     return (
-      <>
+      <div className="game-screen">
         <GameScore
           misstakes={gameState.mistakeCounter}
           hits={gameState.hitCounter}
@@ -70,7 +71,7 @@ export default function GameScreen() {
             });
           }}
         />
-      </>
+      </div>
     );
   } else {
     return <div></div>;

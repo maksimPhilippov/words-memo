@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData, useParams } from "react-router-dom";
 import Card from "../components/Card/Card";
 import { addWordToDeck, removeWordFromDeck } from "../actions/DeckActions";
+import "./Editor.css";
 
 export default function DeckEditor() {
   const { deckName } = useParams();
@@ -23,15 +24,15 @@ export default function DeckEditor() {
     }
   }
   return (
-    <div>
+    <div className="editor">
       <h2>Editing deck "{deckName}"</h2>
       {cards.map((card) => {
         return (
-          <div>
+          <div className="editor-word-option">
             <input
               type="checkbox"
               checked={deck.wordIds.has(card.id)}
-              onClick={() => changeInclusionOfWord(card.id)}
+              onChange={() => changeInclusionOfWord(card.id)}
             />
             <Card card={card} removeable={false} />
           </div>

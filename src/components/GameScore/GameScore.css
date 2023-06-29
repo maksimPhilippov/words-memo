@@ -4,6 +4,11 @@
   justify-content: space-around;
 }
 
+.game-score > span {
+  font-size: 1.5em;
+  margin: 0.5em 3em;
+}
+
 .game-hits {
   color: hsl(120, 100%, 40%);
 }

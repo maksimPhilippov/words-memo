@@ -1,0 +1,7 @@
+.deck-list {
+  margin: 0.5em auto;
+  max-width: 20rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+}

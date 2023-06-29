@@ -1,4 +1,4 @@
-.dictionary-card {
+.deck-info {
   margin: auto 0.5em;
   padding: 0.1em 0.5em;
 
@@ -9,11 +9,19 @@
   border-top: 1px dashed grey;
 }
 
-.dictionary-card > * {
+.deck-info > * {
   display: inline-block;
   margin: 0.2em 0.5em;
   padding: 0.3em;
+
   border-radius: 1em;
   background-color: white;
   border: none;
+
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.deck-info *:visited {
+  color: black;
 }

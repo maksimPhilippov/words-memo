@@ -1,12 +1,30 @@
 .dropdown-base {
   width: fit-content;
+  padding: 0.2em 0.25em;
+  margin: 0.25em;
+  margin-bottom: 0;
+  font-size: 1.2em;
+
+  border-radius: 0.5em;
+  border: 2px solid lime;
 }
 
 .dropdown-base ul {
-  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   position: absolute;
+
+  border: 2px solid lime;
 }
 
 .dropdown-option {
   display: block;
+  width: 100%;
+
+  background-color: limegreen;
+}
+
+.dropdown-option:hover {
+  background-color: lime;
 }

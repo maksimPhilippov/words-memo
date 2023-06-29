@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Guesser.css";
 
 export default function Guesser({ word, onSuccess, onFail, skipWord }) {
   const [text, setText] = useState("");
@@ -16,15 +17,17 @@ export default function Guesser({ word, onSuccess, onFail, skipWord }) {
   }
 
   return (
-    <div>
-      <div>{word.word}</div>
+    <div className="guesser">
+      <div className="guesser-task">{word.word}</div>
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={check}>Check</button>
-      <button onClick={skipWord}>Skip</button>
+      <div className="guesser-controls">
+        <button onClick={check}>Check</button>
+        <button onClick={skipWord}>Skip</button>
+      </div>
     </div>
   );
 }
