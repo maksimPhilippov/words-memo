@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData, useParams } from "react-router-dom";
 import Card from "../components/Card/Card";
-import { addWordToDeck, removeWordFromDeck } from "../reducers/DeckReducer";
+import { addWordToDeck, removeWordFromDeck } from "../actions/DeckActions";
 
 export default function DeckEditor() {
   const { deckName } = useParams();

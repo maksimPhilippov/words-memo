@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import { changeGameMode, changePlayingDeck } from "../../reducers/GameReducer";
+import { changeGameMode, changePlayingDeck } from "../../actions/GameActions";
 
 const gameModes = ["lite", "to fail", "long race", "medium race", "short race"];
 

@@ -1,7 +1,10 @@
 import { combineReducers, legacy_createStore } from "redux";
-import { DictionaryReducer, setDictionary } from "./reducers/DictionaryReducer";
-import { DeckReducer, setDecks } from "./reducers/DeckReducer";
-import { GameReducer, setGame } from "./reducers/GameReducer";
+import { DictionaryReducer } from "./reducers/DictionaryReducer";
+import { DeckReducer } from "./reducers/DeckReducer";
+import { GameReducer } from "./reducers/GameReducer";
+import { setDecks } from "./actions/DeckActions";
+import { setDictionary } from "./actions/DictionaryActions";
+import { setGame } from "./actions/GameActions";
 
 export const store = legacy_createStore(
   combineReducers({
@@ -15,16 +18,20 @@ function initStore() {
   let preventSave = window.localStorage.getItem("save");
   if (preventSave !== null) {
     preventSave = JSON.parse(preventSave);
-    store.dispatch(
-      setDecks(preventSave.decks === undefined ? [] : preventSave.decks)
-    );
+    let decks = preventSave.decks.map((deck) => {
+      return { name: deck.name, wordIds: new Set(deck.wordIds) };
+    });
+    store.dispatch(setDecks(decks));
     store.dispatch(setDictionary(preventSave.dictionary));
     store.dispatch(setGame(preventSave.game));
-    console.log(store.getState());
   }
 
+  Set.prototype.toJSON = function () {
+    return Array.from(this.values());
+  };
   store.subscribe(() => {
     const save = JSON.stringify(store.getState());
+
     window.localStorage.setItem("save", save);
   });
 }

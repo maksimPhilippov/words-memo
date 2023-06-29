@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createDeck } from "../../reducers/DeckReducer";
+import { createDeck } from "../../actions/DeckActions";
 
 export default function DeckAdder() {
   const [name, setName] = useState("");

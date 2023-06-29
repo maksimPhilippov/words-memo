@@ -1,0 +1,19 @@
+.dictionary-adder {
+  margin: 1em auto;
+  padding: 0.5em;
+  width: fit-content;
+
+  text-align: center;
+  border-radius: 1em;
+  background-color: limegreen;
+}
+
+.dictionary-adder > input,
+.dictionary-adder > button {
+  margin: 0.25em;
+  padding: 0.2em 0.5em;
+
+  border-radius: 1em;
+  border: none;
+  background-color: white;
+}

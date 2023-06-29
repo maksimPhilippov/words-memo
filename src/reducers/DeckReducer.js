@@ -70,8 +70,8 @@ export function DeckReducer(state = [], action) {
 
     case CLEAN_WORD_FROM_DECKS:
       newState = state.map((deck) => {
-        if (deck.wordIds.has(action.wordId)) {
-          deck.wordIds.delete(action.wordId);
+        if (deck.wordIds.has(action.payload.wordId)) {
+          deck.wordIds.delete(action.payload.wordId);
         }
         return deck;
       });

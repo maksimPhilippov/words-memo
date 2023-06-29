@@ -8,7 +8,7 @@ export default function DeckList() {
   return (
     <div>
       {decks.map((deck) => (
-        <DeckInfo deck={deck} removable={true} />
+        <DeckInfo key={deck.name} deck={deck} removable={true} />
       ))}
     </div>
   );

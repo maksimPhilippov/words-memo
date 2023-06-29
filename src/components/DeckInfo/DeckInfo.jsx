@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeDeck } from "../../reducers/DeckReducer";
+import { removeDeck } from "../../actions/DeckActions";
 
 export default function DeckInfo({ deck, removable }) {
   const dispatch = useDispatch();

@@ -1,0 +1,13 @@
+.game-score {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.game-hits {
+  color: hsl(120, 100%, 40%);
+}
+
+.game-misstakes {
+  color: red;
+}

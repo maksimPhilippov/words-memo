@@ -1,6 +1,8 @@
+import "./Card.css";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeDictionaryWord } from "../../reducers/DictionaryReducer";
+import { removeDictionaryWord } from "../../actions/DictionaryActions";
+import { cleanWordFromDecks } from "../../actions/DeckActions";
 
 export default function Card({ card, removeable }) {
   const dispatch = useDispatch();
@@ -10,9 +12,10 @@ export default function Card({ card, removeable }) {
       <span>{card.translation}</span>
       {removeable && (
         <button
-          onClick={() =>
-            dispatch(removeDictionaryWord(card.word, card.translation))
-          }
+          onClick={() => {
+            dispatch(removeDictionaryWord(card.word, card.translation));
+            dispatch(cleanWordFromDecks(card.id));
+          }}
         >
           Remove
         </button>

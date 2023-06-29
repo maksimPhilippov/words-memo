@@ -1,6 +1,7 @@
+import "./DictionaryAdder.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addDictionaryWord } from "../../reducers/DictionaryReducer";
+import { addDictionaryWord } from "../../actions/DictionaryActions";
 
 export const DictionaryAdder = (props) => {
   const [word, setWord] = useState("");
@@ -11,11 +12,13 @@ export const DictionaryAdder = (props) => {
     <div className="dictionary-adder">
       <input
         type="text"
+        placeholder="word"
         value={word}
         onChange={(e) => setWord(e.target.value)}
       />
       <input
         type="text"
+        placeholder="translation"
         value={translation}
         onChange={(e) => setTranslation(e.target.value)}
       />
