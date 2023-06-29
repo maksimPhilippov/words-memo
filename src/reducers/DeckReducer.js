@@ -1,55 +1,11 @@
-const ADD_WORD_TO_DECK = "ADD_WORD_TO_DECK";
-const REMOVE_WORD_FROM_DECK = "REMOVE_WORD_FROM_DECK";
-const CREATE_DECK = "CREATE_DECK";
-const REMOVE_DECK = "REMOVE_DECK";
-const SET_DECKS = "SET_DECKS";
-
-export function createDeck(name) {
-  return {
-    type: CREATE_DECK,
-    payload: {
-      name: name,
-    },
-  };
-}
-
-export function removeDeck(name) {
-  return {
-    type: REMOVE_DECK,
-    payload: {
-      name: name,
-    },
-  };
-}
-
-export function addWordToDeck(wordId, deckName) {
-  return {
-    type: ADD_WORD_TO_DECK,
-    payload: {
-      wordId: wordId,
-      deckName: deckName,
-    },
-  };
-}
-
-export function removeWordFromDeck(wordId, deckName) {
-  return {
-    type: REMOVE_WORD_FROM_DECK,
-    payload: {
-      wordId: wordId,
-      deckName: deckName,
-    },
-  };
-}
-
-export function setDecks(decks) {
-  return {
-    type: SET_DECKS,
-    payload: {
-      decks: decks,
-    },
-  };
-}
+import {
+  ADD_WORD_TO_DECK,
+  CLEAN_WORD_FROM_DECKS,
+  CREATE_DECK,
+  REMOVE_DECK,
+  REMOVE_WORD_FROM_DECK,
+  SET_DECKS,
+} from "../actions/DeckActions";
 
 export function DeckReducer(state = [], action) {
   let newState, deckIndex, newWordIds;
@@ -69,7 +25,7 @@ export function DeckReducer(state = [], action) {
 
     case REMOVE_DECK:
       newState = state.filter(
-        (element) => element.name === action.payload.name
+        (element) => element.name !== action.payload.name
       );
       return newState;
 
@@ -111,6 +67,15 @@ export function DeckReducer(state = [], action) {
         return newState;
       }
       return state;
+
+    case CLEAN_WORD_FROM_DECKS:
+      newState = state.map((deck) => {
+        if (deck.wordIds.has(action.wordId)) {
+          deck.wordIds.delete(action.wordId);
+        }
+        return deck;
+      });
+      return newState;
 
     case SET_DECKS:
       return action.payload.decks;

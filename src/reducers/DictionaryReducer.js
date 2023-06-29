@@ -1,35 +1,8 @@
-const ADD_WORD_TO_DICTIONARY = "ADD_WORD_TO_DICTIONARY";
-const REMOVE_WORD_FROM_DICTIONARY = "REMOVE_WORD_FROM_DICTIONARY";
-const SET_DICTIONARY = "SET_DICTIONARY";
-
-export function addDictionaryWord(word, translation) {
-  return {
-    type: ADD_WORD_TO_DICTIONARY,
-    payload: {
-      word: word,
-      translation: translation,
-    },
-  };
-}
-
-export function removeDictionaryWord(word, translation) {
-  return {
-    type: REMOVE_WORD_FROM_DICTIONARY,
-    payload: {
-      word: word,
-      translation: translation,
-    },
-  };
-}
-
-export function setDictionary(dictionary) {
-  return {
-    type: SET_DICTIONARY,
-    payload: {
-      ...dictionary,
-    },
-  };
-}
+import {
+  ADD_WORD_TO_DICTIONARY,
+  REMOVE_WORD_FROM_DICTIONARY,
+  SET_DICTIONARY,
+} from "../actions/DictionaryActions";
 
 export function DictionaryReducer(state = { words: [], nextId: 0 }, action) {
   let newDictionary = {};
